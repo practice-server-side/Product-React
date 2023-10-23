@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const apiClient = axios.create({
-    baseURL: 'http://localhost:8080', // API 서버의 기본 URL
+const KotlinClient = axios.create({
+    baseURL: 'http://localhost:8080',
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-export default apiClient;
+export default KotlinClient;
