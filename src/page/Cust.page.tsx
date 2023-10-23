@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export const UserPage = () => {
+export const CustPage = () => {
     return <>
     <h1>Welcome, UserPage</h1>
     </>
 }
 
-export default UserPage
+export default CustPage
