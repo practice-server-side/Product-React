@@ -1,6 +1,6 @@
 import "./App.css";
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import CustPage from "./page/Cust.page.tsx";
+import JoinPage from "./page/Join.page.tsx";
 import MainPage from "./page/Main.page.tsx";
 
 function Header() {
@@ -14,11 +14,11 @@ function App() {
     <Router>
       <Header/>
       <ul>
-        <li><Link to="/custPage">My Page</Link></li>
+        <li><Link to="/custPage">Join Page</Link></li>
         <li><Link to="/mainPage">My Page</Link></li>
       </ul>
       <Routes>
-        <Route path="/custPage" element={<CustPage/>}/>
+        <Route path="/custPage" element={<JoinPage/>}/>
         <Route path="/mainPage" element={<MainPage/>}/>
       </Routes>
     </Router>
