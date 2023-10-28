@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
 import {getCustLoginIdCheck} from "../api/cust/GetCustLoginIdCheck";
-import {postCustJoin} from "../api/cust/PostCustJoinResponse";
+import {postCustJoin} from "../api/cust/PostCustJoin";
 
 export type JoinFormRequest = {
     loginId: string,
