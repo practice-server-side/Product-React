@@ -1,0 +1,18 @@
+.layout-default {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 40px;
+
+  .header {
+    grid-column: 1 / 17;
+  }
+
+  .side-bar-wrap {
+    grid-column: 1 / 4;
+  }
+
+  .g-view {
+    grid-column: 4 / 17;
+  }
+}

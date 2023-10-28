@@ -1,0 +1,15 @@
+header.header {
+  padding: 3vh 5vw;
+  display: flex;
+
+  box-shadow: rgba(#000, 0.5) 1px 1px 20px 1px;
+
+  ul {
+    margin-left: 5%;
+    display: flex;
+
+    li {
+      padding: 1rem;
+    }
+  }
+}

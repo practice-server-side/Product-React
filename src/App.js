@@ -1,26 +1,19 @@
 import "./App.css";
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import JoinPage from "./page/Join.page.tsx";
 import MainPage from "./page/Main.page.tsx";
 
-function Header() {
-  return <>
-    <h1>My shoping Mall</h1>
-  </>
-}
+import Layout from "./components/layouts/Layout.tsx";
 
 function App() {
   return (
     <Router>
-      <Header/>
-      <ul>
-        <li><Link to="/custPage">Join Page</Link></li>
-        <li><Link to="/mainPage">My Page</Link></li>
-      </ul>
-      <Routes>
-        <Route path="/custPage" element={<JoinPage/>}/>
-        <Route path="/mainPage" element={<MainPage/>}/>
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/custPage" element={<JoinPage />} />
+          <Route path="/mainPage" element={<MainPage />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
