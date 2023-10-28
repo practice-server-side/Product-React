@@ -31,7 +31,7 @@ function DefaultLayout({ children }) {
     <Layout>
       <DefaultHeader></DefaultHeader>
       <Content style={{ padding: "0 50px" }}>
-        <Layout style={{ padding: "24px 0", background: colorBgContainer }}>
+        <Layout style={{ padding: "24px 0", background: colorBgContainer, height: "90vh" }}>
           <Sider style={{ background: colorBgContainer }} width={200}>
             <Menu mode="inline" defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]} style={{ height: "100%" }} items={sidebarMenu} />
           </Sider>
