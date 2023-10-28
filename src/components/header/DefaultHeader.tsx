@@ -8,7 +8,7 @@ const headerMenu = [
   { label: "고도몰", path: "/mainPage" },
   { label: "로그인", path: "/login" },
   { label: "회원가입", path: "/joinPage" },
-  { label: "마이페이지", path: "/myPage" },
+  { label: "마이페이지", path: "/myPage" }
 ];
 
 function DefaultHeader() {
