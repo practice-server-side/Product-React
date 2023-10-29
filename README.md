@@ -1,3 +1,12 @@
+
+
+## 린트 설정법
+webStorm 참고  
+https://velog.io/@seungchan__y/Webstorm%EC%97%90%EC%84%9C-ESLint-Prettier-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
