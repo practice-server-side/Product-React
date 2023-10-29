@@ -12,7 +12,7 @@ type FieldType = {
 };
 
 export const LoginPage = () => {
-  const { loginForm, handleLoginIdChange, handlePasswordChange } =
+  const { loginForm, handleLoginIdChange, handlePasswordChange, handleLogin } =
     useLoginForm();
 
   const [form] = Form.useForm();
@@ -61,12 +61,12 @@ export const LoginPage = () => {
           <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}
             placeholder="비밀번호"
-            value={loginForm.password}
+            value={loginForm.loginPassword}
             onChange={handlePasswordChange}
           />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" block>
+          <Button onClick={handleLogin} type="primary" htmlType="submit" block>
             sign in
           </Button>
         </Form.Item>
