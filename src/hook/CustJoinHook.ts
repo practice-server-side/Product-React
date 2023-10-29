@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getCustLoginIdCheck } from "../api/cust/GetCustLoginIdCheck";
 import { postCustJoin } from "../api/cust/PostCustJoin";
 
-type JoinFormState = {
+export type JoinFormState = {
   loginId: string;
   password: string;
   passwordConfirm: string;

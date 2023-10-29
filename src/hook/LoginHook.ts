@@ -1,14 +1,19 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { postCustLogin } from "../api/cust/postCustLogin";
+import Cookies from "js-cookie";
 
-interface LoginFormState {
+export type LoginFormState = {
   loginId: string;
-  password: string;
-}
+  loginPassword: string;
+};
 
 export const useLoginForm = () => {
+  const navigate = useNavigate(); //TODO : useHistory 쓰고싶은데 왜 네비게이트밖에 안됨 ㅠㅠ
+
   const [loginForm, setLoginForm] = useState<LoginFormState>({
     loginId: "",
-    password: ""
+    loginPassword: ""
   });
 
   const handleLoginIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,15 +21,22 @@ export const useLoginForm = () => {
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLoginForm((prev) => ({ ...prev, password: e.target.value }));
+    setLoginForm((prev) => ({ ...prev, loginPassword: e.target.value }));
   };
 
-  const handleJoin = () => {
-    const apiRequest = true;
-    if (apiRequest) {
-      return "비밀번호가 일치하지 않습니다.";
-    } else {
-      return alert("로그인 성공");
+  const handleLogin = async () => {
+    try {
+      const res = await postCustLogin(loginForm);
+      Cookies.set("sessionId", res.data.sessionId);
+      navigate("/mainPage");
+    } catch (error) {
+      if (error.response.status === 404) {
+        return alert("아이디 또는 비밀번호가 잘못되었습니다.");
+      } else {
+        return alert(
+          "알 수 없는 오류가 발생했습니다.\n잠시 후에 다시 시도해주세요"
+        );
+      }
     }
   };
 
@@ -32,6 +44,6 @@ export const useLoginForm = () => {
     loginForm,
     handleLoginIdChange,
     handlePasswordChange,
-    handleJoin
+    handleLogin
   };
 };
