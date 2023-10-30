@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postCustLogin } from "../api/cust/postCustLogin";
 import Cookies from "js-cookie";
+import { useRecoilState } from "recoil";
+import { LoginState } from "../state/LoginState";
 
 export type LoginFormState = {
   loginId: string;
@@ -9,7 +11,9 @@ export type LoginFormState = {
 };
 
 export const useLoginForm = () => {
-  const navigate = useNavigate(); //TODO : useHistory 쓰고싶은데 왜 네비게이트밖에 안됨 ㅠㅠ
+  const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [loginState, setLoginState] = useRecoilState(LoginState);
 
   const [loginForm, setLoginForm] = useState<LoginFormState>({
     loginId: "",
@@ -27,7 +31,10 @@ export const useLoginForm = () => {
   const handleLogin = async () => {
     try {
       const res = await postCustLogin(loginForm);
-      Cookies.set("sessionId", res.data.sessionId);
+      const sessionId = res.data.sessionId;
+      Cookies.set("sessionId", sessionId);
+      setLoginState(sessionId);
+      localStorage.setItem("sessionId", sessionId);
       navigate("/mainPage");
     } catch (error) {
       if (error.response.status === 404) {

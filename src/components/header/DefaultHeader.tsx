@@ -1,17 +1,30 @@
 import { Link } from "react-router-dom";
 
 import { Layout, Menu } from "antd";
+import { useRecoilState } from "recoil";
+import { LoginState } from "../../state/LoginState";
+import { useEffect, useState } from "react";
 
 const { Header } = Layout;
 
-const headerMenu = [
-  { label: "고도몰", path: "/mainPage" },
-  { label: "로그인", path: "/login" },
-  { label: "회원가입", path: "/joinPage" },
-  { label: "마이페이지", path: "/myPage" }
-];
-
 function DefaultHeader() {
+  const [loginState] = useRecoilState(LoginState);
+  const [headerMenu, setHeaderMenu] = useState([
+    { label: "고도몰", path: "/mainPage" },
+    { label: "로그인", path: "/login" },
+    { label: "회원가입", path: "/joinPage" }
+  ]);
+
+  useEffect(() => {
+    if (localStorage.getItem("sessionId") !== null) {
+      const updatedMenu = headerMenu.filter(
+        (item) => item.label !== "로그인" && item.label !== "회원가입"
+      );
+      updatedMenu.push({ label: "마이페이지", path: "/myPage" });
+      setHeaderMenu(updatedMenu);
+    }
+  }, [loginState]);
+
   return (
     <Header style={{ display: "flex", alignItems: "center" }}>
       <div className="demo-logo" />
