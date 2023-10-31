@@ -1,48 +1,21 @@
 import { Layout, Menu, theme } from "antd";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined
-} from "@ant-design/icons";
+import { useRecoilState } from "recoil";
 
+import { LoginState } from "../../state/LoginState";
 import DefaultHeader from "../header/DefaultHeader";
+import SidebarMenu from "./SidebarMenu";
 
 const { Content, Footer, Sider } = Layout;
-
-const sidebarMenu = [
-  {
-    icon: <UserOutlined />
-  },
-  {
-    icon: <LaptopOutlined />
-  },
-  {
-    icon: <NotificationOutlined />
-  }
-].map((el, index) => {
-  const key = String(index + 1);
-
-  const newLocal = new Array(4).fill(null).map((_, j) => {
-    const subKey = index * 4 + j + 1;
-    return {
-      key: subKey,
-      label: `option${subKey}`
-    };
-  });
-
-  return {
-    key: `sub${key}`,
-    icon: el.icon,
-    label: `subnav ${key}`,
-
-    children: newLocal
-  };
-});
 
 function DefaultLayout({ children }: React.PropsWithChildren) {
   const {
     token: { colorBgContainer }
   } = theme.useToken();
+
+  const [loginState] = useRecoilState(LoginState);
+
+  const sidebarList = SidebarMenu();
+
   return (
     <Layout>
       <DefaultHeader></DefaultHeader>
@@ -54,15 +27,17 @@ function DefaultLayout({ children }: React.PropsWithChildren) {
             height: "90vh"
           }}
         >
-          <Sider style={{ background: colorBgContainer }} width={200}>
-            <Menu
-              mode="inline"
-              defaultSelectedKeys={["1"]}
-              defaultOpenKeys={["sub1"]}
-              style={{ height: "100%" }}
-              items={sidebarMenu}
-            />
-          </Sider>
+          {loginState ? (
+            <Sider style={{ background: colorBgContainer }} width={200}>
+              <Menu
+                mode="inline"
+                defaultSelectedKeys={["1"]}
+                defaultOpenKeys={["sub1"]}
+                style={{ height: "100%" }}
+                items={sidebarList}
+              />
+            </Sider>
+          ) : null}
           <Content style={{ padding: "0 24px", minHeight: 280 }}>
             {children}
           </Content>
