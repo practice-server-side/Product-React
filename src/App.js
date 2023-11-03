@@ -7,6 +7,7 @@ import MainPage from "./page/Main.page.tsx";
 import LoginPage from "./page/Login.page.tsx";
 
 import DefalutLayout from "./components/layouts/DefaultLayout";
+import MyPage from "./page/My.page";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/joinPage" element={<JoinPage />} />
             <Route path="/mainPage" element={<MainPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/myPage" element={<MyPage />} />
           </Routes>
         </DefalutLayout>
       </BrowserRouter>
