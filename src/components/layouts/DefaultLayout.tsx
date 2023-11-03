@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import { Layout, Menu, theme } from "antd";
 import { useRecoilState } from "recoil";
 
@@ -7,7 +8,7 @@ import SidebarMenu from "./SidebarMenu";
 
 const { Content, Footer, Sider } = Layout;
 
-function DefaultLayout({ children }: React.PropsWithChildren) {
+function DefaultLayout() {
   const {
     token: { colorBgContainer }
   } = theme.useToken();
@@ -39,7 +40,7 @@ function DefaultLayout({ children }: React.PropsWithChildren) {
             </Sider>
           ) : null}
           <Content style={{ padding: "0 24px", minHeight: 280 }}>
-            {children}
+            <Outlet />
           </Content>
         </Layout>
       </Content>

@@ -1,7 +1,7 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 import "./App.css";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import JoinPage from "./page/Join.page.tsx";
 import MainPage from "./page/Main.page.tsx";
 import LoginPage from "./page/Login.page.tsx";
@@ -13,20 +13,24 @@ const queryClient = new QueryClient();
 import DefalutLayout from "./components/layouts/DefaultLayout";
 import MyPage from "./page/My.page";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <DefalutLayout />,
+    children: [
+      { path: "mainPage", element: <MainPage /> },
+      { path: "joinPage", element: <JoinPage /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "myPage", element: <MyPage /> }
+    ]
+  }
+]);
+
 function App() {
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <DefalutLayout>
-            <Routes>
-              <Route path="/joinPage" element={<JoinPage />} />
-              <Route path="/mainPage" element={<MainPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/myPage" element={<MyPage />} />
-            </Routes>
-          </DefalutLayout>
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </RecoilRoot>
   );
