@@ -2,7 +2,7 @@ import { Layout, Menu, theme } from "antd";
 import { useRecoilState } from "recoil";
 
 import { LoginState } from "../../state/LoginState";
-import DefaultHeader from "../header/DefaultHeader";
+import DefaultHeader from "./DefaultHeader";
 import SidebarMenu from "./SidebarMenu";
 
 const { Content, Footer, Sider } = Layout;
