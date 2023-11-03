@@ -34,7 +34,6 @@ export const useLoginForm = () => {
       const sessionId = res.data.sessionId;
       Cookies.set("sessionId", sessionId);
       setLoginState(sessionId);
-      localStorage.setItem("sessionId", sessionId);
       navigate("/mainPage");
     } catch (error) {
       if (error.response.status === 404) {
