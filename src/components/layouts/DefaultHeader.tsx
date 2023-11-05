@@ -4,6 +4,7 @@ import { Layout, Menu } from "antd";
 import { useRecoilState } from "recoil";
 import { LoginState } from "../../state/LoginState";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const { Header } = Layout;
 
@@ -16,7 +17,7 @@ function DefaultHeader() {
   ]);
 
   useEffect(() => {
-    if (localStorage.getItem("sessionId") !== null) {
+    if (Cookies.get("sessionId") !== null) {
       const updatedMenu = headerMenu.filter(
         (item) => item.label !== "로그인" && item.label !== "회원가입"
       );
