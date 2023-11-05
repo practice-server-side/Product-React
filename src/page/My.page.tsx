@@ -4,11 +4,11 @@ import myInfoHook from "../hook/MyInfoHook";
 export const MyPage = () => {
   const { myInfoData } = myInfoHook();
 
-  console.log("myInfoData", myInfoData);
+  console.log("myInfoData.data", myInfoData.data);
 
   return (
     <>
-      <h1>아직 준비중</h1>
+      <h1>내 정보</h1>
     </>
   );
 };
