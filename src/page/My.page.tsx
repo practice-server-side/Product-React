@@ -2,16 +2,16 @@ import * as React from "react";
 import myInfoHook from "../hook/MyInfoHook";
 
 export const MyPage = () => {
-  const { myInfoData } = myInfoHook();
+  const { data } = myInfoHook();
 
   return (
     <>
       <h1>내 정보</h1>
-      {myInfoData.data?.custName}
+      {data?.custName}
       <br />
-      {myInfoData.data?.custPhone}
+      {data?.custPhone}
       <br />
-      {myInfoData.data?.custKey}
+      {data?.custKey}
       <br />
     </>
   );

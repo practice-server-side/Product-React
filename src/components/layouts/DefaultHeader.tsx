@@ -17,7 +17,12 @@ function DefaultHeader() {
   ]);
 
   useEffect(() => {
-    if (Cookies.get("sessionId") !== null) {
+    if (
+      Cookies.get("sessionId") !== null &&
+      Cookies.get("sessionId") !== undefined
+    ) {
+      console.log('Cookies.get("sessionId")', Cookies.get("sessionId"));
+      console.log("여기 타는지 안타는지");
       const updatedMenu = headerMenu.filter(
         (item) => item.label !== "로그인" && item.label !== "회원가입"
       );
