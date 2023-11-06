@@ -8,7 +8,7 @@ export const useMyInfoQuery = () => {
     refetchOnMount: false, // 마운트 시 새로고침 비활성화
     retry: false,
     onError: (error) => {
-      console.log("에러 발생", error);
+      console.log("에러 발생tset", error);
     }
   });
 };
