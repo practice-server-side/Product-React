@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { Layout, Menu, theme } from "antd";
 import { useRecoilState } from "recoil";
+import Cookies from "js-cookie";
 
 import { LoginState } from "../../state/LoginState";
 import DefaultHeader from "./DefaultHeader";
 import SidebarMenu from "./SidebarMenu";
+import { useEffect } from "react";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -13,7 +15,13 @@ function DefaultLayout() {
     token: { colorBgContainer }
   } = theme.useToken();
 
-  const [loginState] = useRecoilState(LoginState);
+  const [loginState, setLoginState] = useRecoilState(LoginState);
+
+  useEffect(() => {
+    if (Cookies.get("sessionId") !== null) {
+      setLoginState(Cookies.get("sessionId") !== null);
+    }
+  }, [loginState]);
 
   const sidebarList = SidebarMenu();
 
