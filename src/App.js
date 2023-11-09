@@ -12,6 +12,7 @@ const queryClient = new QueryClient();
 
 import DefalutLayout from "./components/layouts/DefaultLayout";
 import MyPage from "./page/My.page";
+import MyMallList from "./page/MyMallList.page";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       { path: "mainPage", element: <MainPage /> },
       { path: "joinPage", element: <JoinPage /> },
       { path: "login", element: <LoginPage /> },
-      { path: "myPage", element: <MyPage /> }
+      { path: "myPage", element: <MyPage /> },
+      { path: "myPage/mall", element: <MyMallList /> }
     ]
   }
 ]);
