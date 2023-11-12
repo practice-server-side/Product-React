@@ -5,7 +5,6 @@ import { useEffect } from "react";
 export const myInfoHook = () => {
   const navigate = useNavigate();
   const { isLoading, isError, data, error } = useMyInfoQuery();
-  //TODO : 왜자꾸 요청보내지는지 확인 필요함
 
   useEffect(() => {
     if (isError) {
