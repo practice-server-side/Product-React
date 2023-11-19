@@ -4,9 +4,16 @@ import useMyMallListQuery from "../query/useMyMallListQuery";
 export const MyMallList = () => {
   const { data } = useMyMallListQuery();
 
-  console.log("data", data);
-
-  return <>몰리스트</>;
+  return (
+    <>
+      {data?.malls.map((m, i) => (
+        <tr key={i}>
+          <td>{m.mallId}</td>
+          <td>{m.mallName}</td>
+        </tr>
+      ))}
+    </>
+  );
 };
 
 export default MyMallList;
