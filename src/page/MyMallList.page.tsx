@@ -4,13 +4,14 @@ import useMyMallListQuery from "../query/useMyMallListQuery";
 export const MyMallList = () => {
   const { data } = useMyMallListQuery();
 
-  console.log("data", data);
-
   return (
     <>
-      <h1>내 정보</h1>
-      {data?.malls[0].mallName}
-      <tr />
+      {data?.malls.map((m, i) => (
+        <tr key={i}>
+          <td>{m.mallId}</td>
+          <td>{m.mallName}</td>
+        </tr>
+      ))}
     </>
   );
 };
