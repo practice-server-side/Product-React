@@ -6,7 +6,13 @@ export const MyMallList = () => {
 
   console.log("data", data);
 
-  return <>몰리스트</>;
+  return (
+    <>
+      <h1>내 정보</h1>
+      {data?.malls[0].mallName}
+      <tr />
+    </>
+  );
 };
 
 export default MyMallList;
